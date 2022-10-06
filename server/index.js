@@ -22,13 +22,13 @@ app.use("/",Text);
 // });
 
 
-if(process.env.NODE_ENV=="production"){
-  const path=require("path");
-  app.get('/',(req,res)=>{
+// if(process.env.NODE_ENV=="production"){
+//   const path=require("path");
+  app.get('*',(req,res)=>{
     app.use(express.static(path.resolve(__dirname,'client','build')))
     app.sendFile(path.resolve(__dirname,'client','build','index.html'))
   })
-}
+// }
 app.listen(port, () => {
   console.log(`Listening at port ${port}`);
 });
