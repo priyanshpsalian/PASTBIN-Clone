@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 5000;
+const port = process.env.PORT ||5000;
 
 
 const cors = require("cors");
@@ -22,7 +22,13 @@ app.use("/",Text);
 // });
 
 
-
+if(process.env.NODE_ENV=="production"){
+  const path=require("path");
+  app.get('/',(req,res)=>{
+    app.use(express.static(path.resolve(__dirname,'client','build')))
+    app.sendFile(pat.resolve(__dirname,'client','build','index.html'))
+  })
+}
 app.listen(port, () => {
   console.log(`Listening at port ${port}`);
 });

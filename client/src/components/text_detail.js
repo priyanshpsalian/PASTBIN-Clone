@@ -10,7 +10,7 @@ export default function Text_detail() {
     const [found,setFound]=useState([])
     const find=async ()=>{
       
-      console.log("ll");
+      console.log("ll",id);
       try{
         let result = await fetch(`http://localhost:5000/${id}`);
           result = await result.json();
@@ -27,9 +27,10 @@ export default function Text_detail() {
     
   return (
     <>
+      
+      
 
       <Text_found name={found}/>
-      
     </>
   );
 }
